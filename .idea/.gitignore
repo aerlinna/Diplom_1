@@ -1,3 +1,33 @@
-# Default ignored files
-/shelf/
-/workspace.xml
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# Maven target directory, кроме Jacoco отчётов
+target/**
+!target/site/
+!target/site/jacoco/
+!target/site/jacoco/index.html
+
+!target/site/jacoco/**
+
+# Общие файлы Maven
+target/*.log
+target/*.tmp
+target/maven-*
+target/classes/
+target/test-classes/
+
+# Логи
+*.log
+
+# Отчёты, кроме jacoco
+reports/
+
+# IDE прочее
+*.idea/
+*.iml
+
+# OS-specific
+.DS_Store
+Thumbs.db
