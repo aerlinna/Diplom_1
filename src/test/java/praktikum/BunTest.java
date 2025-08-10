@@ -3,6 +3,7 @@ package praktikum;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
@@ -10,41 +11,30 @@ public class BunTest {
 
     private final String n;
     private final float p;
-    private final boolean valid;
 
-    public BunTest(String n, float p, boolean valid) {
+    public BunTest(String n, float p) {
         this.n = n;
         this.p = p;
-        this.valid = valid;
     }
 
-    @Parameterized.Parameters(name = "{0}, {1}, valid={2}")
+    @Parameterized.Parameters(name = "{0}, {1}")
     public static Object[][] data() {
         return new Object[][]{
-                {"black bun", 100f, true},
-                {"white bun", 200f, true},
-                {"red bun", 300.5f, true},
-                {"mini bun", 0f, true},
-                {"super bun", -50f, false}
+                {"black bun", 100f},
+                {"white bun", 200f},
+                {"red bun", 300.5f},
+                {"mini bun", 0f},
+                {"super bun", -50f}
         };
     }
 
     @Test
-    public void nameShouldMatch() {
+    public void name_should_match() {
         assertEquals(n, new Bun(n, p).getName());
     }
 
     @Test
-    public void priceShouldMatch() {
+    public void price_should_match() {
         assertEquals(p, new Bun(n, p).getPrice(), 0f);
-    }
-
-    @Test
-    public void priceValidityCheck() {
-        if (valid) {
-            assertTrue("Цена должна быть неотрицательной", new Bun(n, p).getPrice() >= 0);
-        } else {
-            assertTrue("Цена должна быть отрицательной", new Bun(n, p).getPrice() < 0);
-        }
     }
 }
